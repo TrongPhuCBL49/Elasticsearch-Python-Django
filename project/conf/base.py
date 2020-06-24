@@ -1,6 +1,6 @@
 import os
 import sys
-
+from elasticsearch import Elasticsearch, RequestsHttpConnection
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -9,6 +9,11 @@ sys.path.append(
     os.path.join(BASE_DIR, 'apps')
 )
 
+# Setting Elasticsearch server
+ES_CLIENT = Elasticsearch(
+    ['http://127.0.0.1:9200/'],
+    connection_class=RequestsHttpConnection
+)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
