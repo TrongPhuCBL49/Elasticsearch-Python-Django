@@ -27,7 +27,7 @@ class Student(models.Model):
     last_name = models.CharField(max_length=50)
     # various relationships models
     university = models.ForeignKey(University, null=True, blank=True, on_delete=models.DO_NOTHING)
-    courses = models.ManyToManyField(Course, null=True, blank=True)
+    courses = models.ManyToManyField(Course, blank=True)
     class Meta:
         es_index_name = 'django'
         es_type_name = 'student'
@@ -52,7 +52,7 @@ class Student(models.Model):
                     'max_input_length': 50,
                 },
                 "course_names": {
-                    "type": "keyword", "store": True,
+                    "type": "keyword",
                 },
             }
         }
